@@ -70,29 +70,23 @@ class HorseRaces:
 ###############################################################################
 
     def get_average_time(self):
-        '''
-        Calculate the average race time for each horse.
+        averages = {}
 
-        Returns:
-            A dictionary with each horse and their average time.
-            EXAMPLE: {'Gold Ship': 16.5, 'Daiwa Scarlet': 17.2}
-        '''
-        pass
+        for horse, race_times in self.race_dict.items():
+            avg = sum(race_times.values()) / len(race_times)
+            averages[horse] = avg
+
+        return averages
 
 ###############################################################################
 ##### DO NOT MODIFY THE UNIT TESTS BELOW!
 ###############################################################################
 class dis7_test(unittest.TestCase):
-    '''
-    Unit tests to check that our functions were implemented correctly.
-    '''
     def setUp(self):
         self.horse_races = HorseRaces('race_results.csv')
 
     def test_load_results(self):
-        # Check that outer values are dictionaries
         self.assertIsInstance(self.horse_races.race_dict['Special Week'], dict)
-        # Check one horse's time
         self.assertAlmostEqual(self.horse_races.race_dict['Special Week']['Tenno Sho Spring'], 16.3)
 
     def test_horse_fastest_race(self):
