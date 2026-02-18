@@ -7,32 +7,17 @@ class HorseRaces:
         self.race_dict = self.load_results(self.process_csv(filename))
 
     def process_csv(self, f):
-        '''
-        Parameters: 
-            f, name or path or CSV file: string
-
-        Returns:
-            list of lists
-        '''
         table = []
-
-        # Do not modify this code
-        # This opens the CSV and saves it as a list of lists
         base_path = os.path.abspath(os.path.dirname(__file__))
         full_path = os.path.join(base_path, f)
-        # Open the file to be read by Python
+
         with open(full_path) as file:
-            # Get each of the rows in this file
             rows = file.readlines()
             for row in rows:
-                # Because this is a CSV, we SPLIT the row by commas
-                # We go through each line and build a list of cells
                 table_row = []
                 for cell in row.strip().split(','):
                     table_row.append(cell)
-                # Append the list of cells to the table
                 table.append(table_row)
-        # print(table)
         return table
 
 ###############################################################################
